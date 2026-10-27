@@ -1,5 +1,9 @@
 # Node Zip Ties
 
+<!-- current-release:start -->
+**[Download current release — v0.4.2](https://github.com/danielmoreink/Zip-ties-for-Blender/raw/refs/heads/master/dist/node_zip_ties-0.4.2.zip)**
+<!-- current-release:end -->
+
 Bundle node wires into tidy, movable cable ties. Keep busy node graphs readable while preserving each wire’s connection and color.
 
 Works in **Geometry Nodes, Shader Editor, and Compositor**. Requires **Blender 5.2 or newer**.

@@ -28,6 +28,8 @@ blender --background --factory-startup --python-exit-code 1 --python tests/scale
 
 Build with `python tools/package.py`. Validate the resulting ZIP with `blender --command extension validate <archive-path>`.
 
+Packaging also updates the current-release download link at the top of both READMEs using the manifest version. Keep this link in future user-guide edits; its HTML comment markers identify the auto-updated block.
+
 `tools/gui_demo.py` prepares an example graph in a graphical session. `tools/preview_tie.py` exports the strap drawing geometry as SVG; this is not an editor screenshot. Rendering the PNG preview requires an optional development rasterizer, not an add-on dependency.
 
 See TESTING.md for test coverage and remaining graphical verification, FEASIBILITY.md for architecture, and PARITY.md for differences from the ComfyUI reference. Preserve LICENSE and THIRD_PARTY_NOTICES.txt when redistributing.

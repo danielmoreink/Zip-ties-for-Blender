@@ -1,18 +1,66 @@
-# Node Zip Ties 0.4.2
+# Node Zip Ties
 
-Install in unmodified Blender 5.2. Hold Z and drag across two or more wires to create a tie. Drag to move; R rotates freely (click/Enter confirms, Esc/right-click cancels). Shift-drag snaps rotation; add Alt for free rotation. Ctrl-click toggles selection, Shift-click adds. X removes selected ties only; Delete/Backspace also remove selected nodes. Double-click or Z-drag across a strap removes it.
+Bundle node wires into tidy, movable cable ties. Keep busy node graphs readable while preserving each wire’s connection and color.
 
-The N sidebar contains selected-tie Color/Remove controls, global Appearance settings, and Maintenance. There are no creation/rotation buttons or Nodes & Ties section. The right-click menu offers creation, rotation, color and removal. Optional box-selection, joint movement and clipboard commands remain available through F3.
+Works in **Geometry Nodes, Shader Editor, and Compositor**. Requires **Blender 5.2 or newer**.
 
-Blender draws actual native reroute wires. The add-on draws only straps and gesture indicators. Small native reroute handles remain visible. Removing the last intact tie restores the direct connection. Native routes and stored data survive save/reload and remain functional with the add-on disabled. Older saved ties are migrated automatically.
+## Installation
 
-Gesture socket positions can be approximate on complex custom node layouts. Ordinary Blender movement/clipboard commands do not fully synchronize tie metadata; optional joint commands are available through F3. Automated native routing, evaluation, undo, clipboard and UI-contract tests pass; graphical event/visual checks remain pending.
+1. Download the add-on ZIP.
+2. In Blender, open **Edit → Preferences → Get Extensions**, open the menu, and choose **Install from Disk**.
+3. Select the ZIP and enable **Node Zip Ties**.
 
-Reference: https://github.com/safzanpirani/comfyui-zip-ties
-Original MIT notice: THIRD_PARTY_NOTICES.txt. Extension license: GPL-3.0-or-later.
+When updating, restart Blender after installing the new version.
 
-G moves the selected ties freely. Press G again (G, G) to slide along a frozen guide of the existing noodle bundle, bounded by neighbouring ties or connected sockets. Sliding does not pass neighbouring ties. Click/Enter confirms; Esc/right-click cancels. Existing click-and-drag movement remains available. Guides average the member noodles and retain the tie angle.
+## Quick start
 
-S scales selected ties: strap length and noodle spacing change proportionally around each tie centre, while width and angle stay fixed. Mouse movement sets the factor, or type a number (S, 2, Enter doubles; S, .5, Enter halves). Click/Enter confirms; Esc/right-click cancels. Scale is per tie, persists in the .blend and copies with ties. Existing ties default to scale 1.
+Hold **Z** and drag a line across two or more wires. Release to create a tie, then drag its strap to arrange the bundle. Add more ties to guide the wires through your graph.
 
-Version 0.4.2 restyles the strap with a rounded folded tip, wider locking collar, dark outlines, and body/fold shading. The same geometry drives picking, cuts and box selection. Routing and transform controls are unchanged. A geometry preview is available in docs/tie-style-preview.svg and .png; this is not an editor screenshot.
+Place the mouse over the node editor when using shortcuts.
+
+## Controls
+
+| Action | Shortcut or gesture |
+|---|---|
+| Create a tie | Hold **Z** and drag across wires |
+| Move selected ties | **G**, or drag the strap |
+| Slide along the wires | **G**, then **G** again; stops before neighboring ties |
+| Rotate selected ties | **R** |
+| Rotate in 15° steps | **Shift-drag**; hold **Alt** as well for free rotation |
+| Scale tie length and wire spacing | **S** |
+| Select multiple ties | **Ctrl-click** to toggle; **Shift-click** to add |
+| Change color or access more actions | **Right-click** the strap |
+| Delete selected ties | **X** |
+| Delete selected ties and selected nodes | **Delete** or **Backspace** |
+| Remove one tie | **Double-click**, or hold **Z** and drag across its strap |
+
+For keyboard transforms, **click** or press **Enter** to confirm; press **Esc** or **right-click** to cancel. Scaling also accepts numeric input: **S → 2 → Enter** doubles the tie’s length and gaps; **S → .5 → Enter** halves them.
+
+## Settings
+
+Open the node editor sidebar with **N**, then choose **Zip Ties**.
+
+- **Selected Ties:** change color or remove the selection.
+- **Appearance — All Ties:** show or hide straps, adjust strand spacing and strap width, and choose a color mode for new ties. These settings apply across node trees.
+- **Maintenance:** remove missing wire references after editing connections.
+
+The creation shortcut can be changed in the add-on preferences.
+
+## Moving and copying nodes with ties
+
+To move nodes and their ties together, use **F3 → Move Selected Nodes and Ties**.
+
+To copy a bundle, select all nodes at both ends of its wires, then use **F3 → Copy Nodes with Ties** and **F3 → Paste Nodes with Ties**. These commands preserve the associated ties; ordinary node copy/paste does not preserve the straps. **Box Select Ties and Nodes** is also available through F3.
+
+## Notes
+
+- Ties and their wire routes save with your `.blend` file.
+- The add-on uses native reroute nodes, whose small handles may remain visible. Removing the last tie restores the direct connection when its route is intact.
+- Disabling the add-on hides the straps; the routed connections continue to work.
+- Gesture picking can be less precise on complex custom node layouts.
+
+## Credits and license
+
+Based on [ComfyUI Zip Ties by Safzan Pirani](https://github.com/safzanpirani/comfyui-zip-ties). The original MIT license notice is included with the add-on.
+
+Node Zip Ties is licensed under [GPL-3.0-or-later](LICENSE).

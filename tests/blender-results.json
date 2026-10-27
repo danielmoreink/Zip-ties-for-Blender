@@ -1,0 +1,11 @@
+{
+  "blender": "5.2.0 LTS",
+  "uses_native_reroutes": true,
+  "graph_integrity": true,
+  "rename": true,
+  "frames": true,
+  "reconnect": true,
+  "prune": true,
+  "save_reload_without_extension": true,
+  "registration_cleanup": true
+}

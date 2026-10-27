@@ -1,0 +1,10 @@
+schema_version = "1.0.0"
+id = "node_zip_ties"
+version = "0.4.2"
+name = "Node Zip Ties"
+tagline = "Organize independent node links with movable cable ties"
+maintainer = "Node Zip Ties contributors"
+type = "add-on"
+blender_version_min = "5.2.0"
+license = ["SPDX:GPL-3.0-or-later"]
+tags = ["Node"]

@@ -1,0 +1,13 @@
+{
+  "g_free_move": true,
+  "gg_slide": true,
+  "neighbour_limits": true,
+  "curved_guide": true,
+  "cancel_restores": true,
+  "confirm": true,
+  "key_repeat_ignored": true,
+  "click_drag_retained": true,
+  "no_rewiring": true,
+  "no_selection_pass_through": true,
+  "real_ui_dispatch_tested": false
+}

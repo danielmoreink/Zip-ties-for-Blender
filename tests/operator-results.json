@@ -1,0 +1,9 @@
+{
+  "rotation": true,
+  "color": true,
+  "tie_only_delete": true,
+  "x_shortcut": true,
+  "no_selection_pass_through": true,
+  "mixed_delete": true,
+  "ui_undo_tested": false
+}

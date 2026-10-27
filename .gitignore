@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+*.blend1
+tests/*.blend
+tests/gui-*.log
+reference/
+research/
+tests/clipboard-temp/

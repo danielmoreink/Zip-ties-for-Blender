@@ -1,0 +1,18 @@
+{
+  "blender": "5.2.0 LTS",
+  "three_strands": true,
+  "no_bypass_links": true,
+  "move_rotate_reuse_nodes": true,
+  "multiple_ties": true,
+  "remove_restores_direct": true,
+  "cut_not_resurrected": true,
+  "muted_preserved": true,
+  "multi_input_order": true,
+  "legacy_migration": true,
+  "centred_strap": true,
+  "offset_layout_upgrade": true,
+  "shader": true,
+  "compositor": true,
+  "save_reload_without_addon": true,
+  "ui_visual_tested": false
+}

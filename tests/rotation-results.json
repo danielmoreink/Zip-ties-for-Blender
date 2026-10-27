@@ -1,0 +1,11 @@
+{
+  "free_37_degrees": true,
+  "confirm": true,
+  "cancel_restores": true,
+  "angle_wrap": true,
+  "native_helpers_reused": true,
+  "no_tie_pass_through": true,
+  "hover_start": true,
+  "r_keymap": true,
+  "real_ui_event_dispatch_tested": false
+}

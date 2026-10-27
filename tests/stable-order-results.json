@@ -1,0 +1,9 @@
+{
+  "upward_drag": true,
+  "horizontal_crossing": true,
+  "four_strands": true,
+  "no_edge_recreation": true,
+  "new_tie_insertion": true,
+  "save_reload": true,
+  "visual_ui_tested": false
+}

@@ -1,0 +1,12 @@
+{
+  "blender": "5.2.0 LTS",
+  "vertices": 8,
+  "polygons": 6,
+  "equal_before_after_storage": true,
+  "equal_after_move_rotate_multiple_ties": true,
+  "equal_after_scale": true,
+  "equal_after_disable": true,
+  "reroute": true,
+  "native_reroute_backend": true,
+  "ui_visual_tested": false
+}

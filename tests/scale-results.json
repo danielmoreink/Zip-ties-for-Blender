@@ -1,0 +1,14 @@
+{
+  "mouse_scale": true,
+  "numeric_half": true,
+  "proportional_length_and_gaps": true,
+  "width_unchanged": true,
+  "centre_and_angle_unchanged": true,
+  "selected_only": true,
+  "cancel_restores": true,
+  "centre_start": true,
+  "no_rewiring": true,
+  "save_reload": true,
+  "s_keymap": true,
+  "real_ui_dispatch_tested": false
+}

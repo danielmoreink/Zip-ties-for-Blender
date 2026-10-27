@@ -14,6 +14,9 @@ def selected_actions(layout,context):
     tree,chosen = state(context)
     col = layout.column(align=True)
     col.enabled = bool(tree and tree.is_editable and chosen)
+    rename = col.row()
+    rename.enabled = bool(tree and tree.is_editable and len(chosen)==1)
+    rename.operator('node.zip_tie_name',text='Name…')
     col.operator('node.zip_tie_color',text='Color…')
     col.operator('node.zip_tie_edit',text='Remove Tie' if len(chosen)==1 else 'Remove Ties',icon='X').action = 'DELETE'
 
@@ -75,6 +78,7 @@ class NZT_PT_appearance(ChildPanel,bpy.types.Panel):
         layout = self.layout
         options = prefs(context)
         layout.prop(options,'enabled',text='Show Straps')
+        layout.prop(options,'show_names',text='Show Names')
         layout.label(text='Global settings · all node trees')
         for name,label in [('spacing','Strand Spacing'),('width','Strap Width')]:
             layout.label(text=label)

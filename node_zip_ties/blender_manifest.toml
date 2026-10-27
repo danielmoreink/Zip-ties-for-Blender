@@ -1,6 +1,6 @@
 schema_version = "1.0.0"
 id = "node_zip_ties"
-version = "0.4.2"
+version = "0.5.0"
 name = "Node Zip Ties"
 tagline = "Organize independent node links with movable cable ties"
 maintainer = "Node Zip Ties contributors"

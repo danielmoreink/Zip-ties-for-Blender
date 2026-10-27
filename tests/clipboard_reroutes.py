@@ -20,6 +20,7 @@ target.location = (300,0)
 keys = [data.link_key(l,True) for l in tree.links]
 tie = data.new_tie([0,0],0,keys,[],[1,0,0,1])
 tie['scale'] = 1.75
+tie['name'] = 'Main bundle'
 data.write(tree,[tie])
 area = bpy.context.screen.areas[0]
 area.type = 'NODE_EDITOR'
@@ -37,6 +38,7 @@ assert len(tree.links) == 24, len(tree.links)
 assert not set(ties[0]['members']) & set(ties[1]['members'])
 for t in ties:
     assert t['scale']==1.75
+    assert t['name']=='Main bundle'
     assert all(len(routing.path(tree,k)) == 4 for k in t['members'])
     assert sum(1 for n in tree.nodes if n.get(routing.TIE)==t['id']) == 9
 addon.unregister()

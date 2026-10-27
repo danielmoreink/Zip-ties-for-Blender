@@ -1,0 +1,10 @@
+{
+  "rename": true,
+  "unicode": true,
+  "single_selection": true,
+  "clear_hides": true,
+  "above_rotated_silhouette": true,
+  "no_rewiring": true,
+  "save_reload": true,
+  "actual_font_render_tested": false
+}

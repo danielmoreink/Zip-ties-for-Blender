@@ -34,3 +34,7 @@ Scale is an optional validated per-tie multiplier (default 1). Geometry uses it 
 ## Strap style — 0.4.2
 
 The GPU renderer uses convex fan triangulation for the rounded tip and smooth per-vertex colors for gradient shading. The marker outline is shared with hit/cut tests. Five pure geometry tests pass, including rounded-corner exclusion and folded-head picking/cutting. Scale regression passes with the new silhouette. tools/preview_tie.py exports the exact drawing geometry to SVG with GPU calls replaced by vector recording; the PNG preview was rasterized from it and visually inspected. This verifies shape/shading intent, not actual Blender GPU/editor rendering.
+
+## Optional tie names — 0.5.0
+
+The single-selection Name operator stores an optional sanitized Unicode name, with clearing supported. BLF draws theme-colored upright text above the full screen-space silhouette, with small screen-space font size and shadow. Show Names toggles presentation without removing data. tests/names.py passes rename, clear, single-selection availability, initial dialog text, label positioning on rotated/scaled silhouettes (mocked BLF), no rewiring and actual save/reload. Clipboard tests preserve names. Actual font rendering still requires graphical verification.

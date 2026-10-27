@@ -1,5 +1,6 @@
 import bpy
 import gpu
+import blf
 from gpu_extras.batch import batch_for_shader
 from . import data, geometry as g, selection, sockets
 from .preferences import prefs
@@ -62,6 +63,33 @@ def draw_tie(tie,spacing,width,transform,border,active):
         line(points+points[:1],border,2 if active else 1.3)
 
 
+def label_anchor(tie,spacing,width,transform):
+    """Top of the visible silhouette in screen space, independent of rotation."""
+    points = [transform(p) for poly in g.marker(tie,spacing,width) for p in poly]
+    return ((min(p[0] for p in points)+max(p[0] for p in points))/2,max(p[1] for p in points))
+
+
+def draw_name(context,tie,options,transform):
+    name = tie.get('name','')
+    if not name:
+        return
+    font = 0
+    scale = context.preferences.system.ui_scale or 1.0
+    blf.size(font,11*scale)
+    width,_ = blf.dimensions(font,name)
+    x,y = label_anchor(tie,options.spacing,options.width,transform)
+    blf.position(font,x-width/2,y+5*scale,0)
+    text = context.preferences.themes[0].node_editor.space.text
+    blf.color(font,*(tuple(text[:3])+(1.0,)))
+    blf.enable(font,blf.SHADOW)
+    blf.shadow(font,3,0,0,0,.65)
+    blf.shadow_offset(font,1,-1)
+    try:
+        blf.draw(font,name)
+    finally:
+        blf.disable(font,blf.SHADOW)
+
+
 def draw():
     global last_error
     context = bpy.context
@@ -79,6 +107,9 @@ def draw():
             active = tie['id'] in selection.of(tree) or tie['id'] == selection.hovered.get(context.area.as_pointer())
             border = (1,.1,.1,1) if tie['id'] in cuts else (1,1,1,1) if active else (.05,.05,.05,1)
             draw_tie(tie,options.spacing,options.width,transform,border,active)
+        if options.show_names:
+            for tie in ties:
+                draw_name(context,tie,options,transform)
         if stroke:
             line([transform(stroke[0]),transform(stroke[1])],(1,.1,.1,1) if cuts else (1,1,1,1))
         box = selection.boxes.get(context.area.as_pointer())

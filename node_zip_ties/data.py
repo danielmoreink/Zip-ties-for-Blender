@@ -47,6 +47,11 @@ def read(tree):
             if len(color) != 4 or not all(isinstance(v,(int,float)) and math.isfinite(v) and 0<=v<=1 for v in color):
                 continue
             t['color'] = color
+            if 'name' in t:
+                if isinstance(t['name'],str):
+                    t['name'] = ' '.join(t['name'].split())[:128]
+                else:
+                    t.pop('name')
             if 'scale' in t:
                 value = t['scale']
                 t['scale'] = max(.1,min(20,value)) if isinstance(value,(int,float)) and math.isfinite(value) and value>0 else 1.0

@@ -24,6 +24,7 @@ blender --background --factory-startup --python-exit-code 1 --python tests/rotat
 blender --background --factory-startup --python-exit-code 1 --python tests/sidebar_ui.py
 blender --background --factory-startup --python-exit-code 1 --python tests/move_modal.py
 blender --background --factory-startup --python-exit-code 1 --python tests/scale_modal.py
+blender --background --factory-startup --python-exit-code 1 --python tests/names.py
 ```
 
 Build with `python tools/package.py`. Validate the resulting ZIP with `blender --command extension validate <archive-path>`.

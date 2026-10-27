@@ -9,6 +9,7 @@ def prefs(context):
 
 class Defaults:
     enabled = True
+    show_names = True
     spacing = 8.0
     width = 8.0
     color_mode = 'RANDOM'
@@ -49,6 +50,8 @@ class NZT_Preferences(bpy.types.AddonPreferences):
     bl_idname = __package__
     enabled: BoolProperty(name='Show Straps', default=True,update=update_visibility,
         description='Show colored straps; native routed wires and editing remain available')
+    show_names: BoolProperty(name='Show Names',default=True,update=update_visibility,
+        description='Show small upright labels above named ties')
     spacing: FloatProperty(name='Strand spacing', default=8, min=4, max=30,update=update_routes)
     width: FloatProperty(name='Strap width', default=8, min=2, max=20,update=update_routes)
     color_mode: EnumProperty(name='New tie color', items=[('RANDOM','Random',''),('GREY','Grey',''),('WIRES','Match wires','')])
@@ -57,5 +60,5 @@ class NZT_Preferences(bpy.types.AddonPreferences):
 
     def draw(self, context):
         layout = self.layout
-        for name in ['enabled','gesture_key','color_mode','spacing','width']:
+        for name in ['enabled','show_names','gesture_key','color_mode','spacing','width']:
             layout.prop(self, name)

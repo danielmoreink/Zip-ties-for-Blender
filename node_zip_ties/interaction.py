@@ -3,7 +3,7 @@ import json
 import math
 import random
 import bpy
-from bpy.props import BoolProperty, EnumProperty, FloatProperty, FloatVectorProperty
+from bpy.props import BoolProperty, EnumProperty, FloatProperty, FloatVectorProperty, StringProperty
 from . import data, geometry as g, rendering, selection, sockets, routing, transforms
 from .preferences import prefs
 
@@ -423,6 +423,48 @@ class NZT_OT_rotate(NodeOperator,bpy.types.Operator):
         return {'RUNNING_MODAL'}
 
 
+class NZT_OT_name(NodeOperator,bpy.types.Operator):
+    bl_idname = 'node.zip_tie_name'
+    bl_label = 'Name Zip Tie'
+    bl_description = 'Give the selected tie a label; leave empty to remove its name'
+    bl_options = {'REGISTER','UNDO'}
+    name: StringProperty(name='Name',maxlen=128)
+    tie_id: StringProperty(options={'HIDDEN'})
+
+    @classmethod
+    def poll(cls,context):
+        tree = rendering.tree_of(context)
+        return bool(tree and tree.is_editable and
+                    sum(t['id'] in selection.of(tree) for t in data.read(tree))==1)
+
+    def invoke(self,context,event):
+        tree = rendering.tree_of(context)
+        tie = next(t for t in data.read(tree) if t['id'] in selection.of(tree))
+        self.tie_id = tie['id']
+        self.name = tie.get('name','')
+        return context.window_manager.invoke_props_dialog(self)
+
+    def draw(self,context):
+        self.layout.prop(self,'name',text='')
+        self.layout.label(text='Leave empty to hide the label.')
+
+    def execute(self,context):
+        tree = rendering.tree_of(context)
+        ties = data.read(tree)
+        target = self.tie_id or next((t['id'] for t in ties if t['id'] in selection.of(tree)),None)
+        tie = next((t for t in ties if t['id']==target),None)
+        if tie is None:
+            return {'CANCELLED'}
+        name = ' '.join(self.name.split())[:128]
+        if name:
+            tie['name'] = name
+        else:
+            tie.pop('name',None)
+        data.write(tree,ties)
+        redraw(context)
+        return {'FINISHED'}
+
+
 class NZT_OT_color(NodeOperator,bpy.types.Operator):
     bl_idname = 'node.zip_tie_color'
     bl_label = 'Tie Color'
@@ -635,4 +677,4 @@ def remove_keymaps():
     keymaps.clear()
 
 
-classes = [NZT_OT_hover,NZT_OT_gesture,NZT_OT_pick,NZT_OT_move,NZT_OT_scale,NZT_OT_rotate,NZT_OT_color,NZT_OT_edit,NZT_OT_box,NZT_OT_move_nodes]
+classes = [NZT_OT_hover,NZT_OT_gesture,NZT_OT_pick,NZT_OT_move,NZT_OT_scale,NZT_OT_rotate,NZT_OT_name,NZT_OT_color,NZT_OT_edit,NZT_OT_box,NZT_OT_move_nodes]
